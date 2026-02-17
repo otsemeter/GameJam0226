@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://e2d0n2oa5nh7"]
+
+[ext_resource type="Texture2D" uid="uid://b8hkd24epkf55" path="res://icon.svg" id="1_5vuio"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6abr3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gto81"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5vuio")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Detective" type="CharacterBody2D" unique_id=2096185672]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500579531]
+shape = SubResource("CapsuleShape2D_6abr3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=823712036]
+sprite_frames = SubResource("SpriteFrames_gto81")
+
+[node name="StateMachine" type="Node" parent="." unique_id=919303517]
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1969943007]
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1770007170]
