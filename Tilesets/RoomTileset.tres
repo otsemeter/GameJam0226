@@ -1,0 +1,35 @@
+[gd_resource type="TileSet" format=3 uid="uid://g0akar8mmk6d"]
+
+[ext_resource type="Texture2D" uid="uid://cd70xy561bfxu" path="res://Assets/Game/Tilesets/Livingroom1.jpeg" id="1_8rwox"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xqpxp"]
+texture = ExtResource("1_8rwox")
+40:18/size_in_atlas = Vector2i(4, 2)
+40:18/0 = 0
+40:18/0/texture_origin = Vector2i(-24, 8)
+40:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -24, 56, -24, 56, 8, -8, 8)
+40:17/0 = 0
+40:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+40:16/0 = 0
+40:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+39:15/0 = 0
+39:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 3, 8, 3, 8, 8, 3, 8)
+40:15/0 = 0
+40:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 3, -8, 3, -8, 8)
+39:16/0 = 0
+39:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, 8, -8, 8, 8, 3, 8)
+39:20/0 = 0
+39:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, 8, -8, 8, -3, 3, -3)
+44:20/0 = 0
+44:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3, -8, -3, -3, -8, -3)
+44:15/0 = 0
+44:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3, -3, 3, -3, 8, -8, 8)
+44:19/0 = 0
+44:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3, -8, -3, 8, -8, 8)
+43:20/0 = 0
+43:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3, -8, -3)
+45:18/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_xqpxp")

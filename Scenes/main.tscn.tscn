@@ -1,7 +1,19 @@
 [gd_scene format=3 uid="uid://curx5bbg7qwmi"]
 
+[ext_resource type="PackedScene" uid="uid://b1810651lpj5j" path="res://Scenes/Rooms/Kitchen.tscn" id="1_4ahot"]
+[ext_resource type="PackedScene" uid="uid://e2d0n2oa5nh7" path="res://Scenes/detective.tscn" id="2_pv6up"]
+
 [node name="Control" type="Control" unique_id=1554463980]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 387.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 427.0
+
+[node name="Kitchen" parent="." unique_id=17456892 instance=ExtResource("1_4ahot")]
+
+[node name="Detective" parent="Kitchen" unique_id=2096185672 instance=ExtResource("2_pv6up")]
+position = Vector2(190, -175)
+
+[node name="Camera2D" type="Camera2D" parent="Kitchen/Detective" unique_id=661915463]
+zoom = Vector2(3, 3)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://e2d0n2oa5nh7"]
 
 [ext_resource type="Texture2D" uid="uid://b8hkd24epkf55" path="res://icon.svg" id="1_5vuio"]
+[ext_resource type="Script" uid="uid://bmvij4aux4kdn" path="res://Scenes/detective.gd" id="1_8u120"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6abr3"]
 
@@ -16,11 +17,14 @@ animations = [{
 }]
 
 [node name="Detective" type="CharacterBody2D" unique_id=2096185672]
+script = ExtResource("1_8u120")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500579531]
 shape = SubResource("CapsuleShape2D_6abr3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=823712036]
+position = Vector2(0, -0.50000346)
+scale = Vector2(0.171875, 0.24218747)
 sprite_frames = SubResource("SpriteFrames_gto81")
 
 [node name="StateMachine" type="Node" parent="." unique_id=919303517]
