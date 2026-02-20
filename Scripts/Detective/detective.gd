@@ -27,7 +27,10 @@ func _process(delta) -> void:
 		$AnimatedSprite2D.flip_h = false
 		
 	# handle player teleportation
-	
+	if in_doorway and Input.is_action_just_pressed("ui_accept"):
+		position.x += tp_x
+		position.y += tp_y
+		in_doorway = false
 		
 
 func _physics_process(delta: float) -> void:
@@ -49,26 +52,41 @@ func _physics_process(delta: float) -> void:
 
 func _on_kitchen_door_body_entered(body: Node2D) -> void:
 	in_doorway = true
-	tp_y -= 180
-	tp_x += 90
+	tp_y = -180
+	tp_x = 90
 
 
 func _on_cellar_door_body_entered(body: Node2D) -> void:
 	in_doorway = true
-	tp_y += 200 # Replace with function body.
+	tp_y = 200
+	tp_x = 0
 
 
 func _on_kitchen_to_hallway_body_entered(body: Node2D) -> void:
 	in_doorway = true
-	tp_y += 180
-	tp_x -= 90
+	tp_y = 180
+	tp_x = -90
 
 
 func _on_living_room_door_body_entered(body: Node2D) -> void:
 	in_doorway = true
-	tp_x += 150
+	tp_y = 0
+	tp_x = 150
 
 
 func _on_living_room_to_hallway_body_entered(body: Node2D) -> void:
 	in_doorway = true
-	tp_x -= 150 # Replace with function body.
+	tp_x = -150
+	tp_y = 0
+
+
+func _on_kitchen_door_body_exited(body: Node2D) -> void:
+	in_doorway = false
+
+
+func _on_cellar_door_body_exited(body: Node2D) -> void:
+	in_doorway = false
+
+
+func _on_living_room_door_body_exited(body: Node2D) -> void:
+	in_doorway = false

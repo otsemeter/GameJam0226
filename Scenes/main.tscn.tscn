@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://curx5bbg7qwmi"]
+[gd_scene load_steps=21 format=3 uid="uid://curx5bbg7qwmi"]
 
 [ext_resource type="PackedScene" uid="uid://b1810651lpj5j" path="res://Scenes/Rooms/DownstairsHalway.tscn" id="1_4ahot"]
+[ext_resource type="Script" uid="uid://c6es4paed2iqv" path="res://Scenes/main.tscn.gd" id="1_cs6a1"]
 [ext_resource type="PackedScene" uid="uid://e2d0n2oa5nh7" path="res://Scenes/detective.tscn" id="2_pv6up"]
 [ext_resource type="PackedScene" uid="uid://337k13cjci8i" path="res://Scenes/Rooms/Attic.tscn" id="3_de1j5"]
 [ext_resource type="PackedScene" uid="uid://mnuwrnip6qs" path="res://Scenes/Rooms/Cellar.tscn" id="4_i5itr"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b774t7epmmct3" path="res://Scenes/Rooms/UpstairsHalway.tscn" id="7_cs6a1"]
 [ext_resource type="PackedScene" uid="uid://c6k7u2k52mgpy" path="res://Scenes/Rooms/BedRoom.tscn" id="8_0qm1v"]
 [ext_resource type="PackedScene" uid="uid://0wbhquxy5ro" path="res://Scenes/Rooms/BathRoom.tscn" id="9_uowbv"]
+[ext_resource type="Texture2D" uid="uid://bamfainei4pis" path="res://Assets/Game/Objects/up_arrows.jpg" id="10_rgtcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cs1o"]
 size = Vector2(27.5, 39.375)
@@ -22,6 +24,38 @@ size = Vector2(43, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qm1v"]
 size = Vector2(20, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs6a1"]
+atlas = ExtResource("10_rgtcd")
+region = Rect2(15, 99, 106, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qm1v"]
+atlas = ExtResource("10_rgtcd")
+region = Rect2(121, 99, 106, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uowbv"]
+atlas = ExtResource("10_rgtcd")
+region = Rect2(227, 99, 106, 156)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56ksf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs6a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qm1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uowbv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cs6a1"]
+size = Vector2(64, 64)
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -29,6 +63,7 @@ offset_left = -2.0
 offset_top = 337.0
 offset_right = 38.0
 offset_bottom = 377.0
+script = ExtResource("1_cs6a1")
 
 [node name="Detective" parent="." instance=ExtResource("2_pv6up")]
 z_index = 1
@@ -69,8 +104,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownstairsHallway/LivingRoomDoor"]
 position = Vector2(1.5, 0.5)
 shape = SubResource("RectangleShape2D_cs6a1")
-
-[node name="Area2D" type="Area2D" parent="DownstairsHallway"]
 
 [node name="Attic" parent="." instance=ExtResource("3_de1j5")]
 position = Vector2(86, -361)
@@ -120,8 +153,122 @@ offset_right = 1684.0
 offset_bottom = 1247.0
 color = Color(0, 0, 0, 1)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EnterPrompt" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 110.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/EnterPrompt"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/EnterPrompt/ColorRect"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 8.0
+offset_right = 134.0
+offset_bottom = 73.0
+text = "Press Space 
+To Enter"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/EnterPrompt/ColorRect"]
+position = Vector2(160, 39)
+scale = Vector2(0.47169808, 0.48717946)
+sprite_frames = SubResource("SpriteFrames_56ksf")
+frame_progress = 0.8611047
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(690, 80)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -345.0
+offset_top = -98.0
+offset_right = 345.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.13887054, 0.20230508, 0.08968819, 1)
+
+[node name="Inventory" type="HBoxContainer" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -36.0
+offset_right = 340.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Slot1" type="Button" parent="CanvasLayer/ColorRect/Inventory"]
+layout_mode = 2
+focus_mode = 1
+icon = SubResource("PlaceholderTexture2D_cs6a1")
+
+[node name="Slot2" type="Button" parent="CanvasLayer/ColorRect/Inventory"]
+layout_mode = 2
+focus_mode = 1
+icon = SubResource("PlaceholderTexture2D_cs6a1")
+
+[node name="Slot3" type="Button" parent="CanvasLayer/ColorRect/Inventory"]
+layout_mode = 2
+focus_mode = 1
+icon = SubResource("PlaceholderTexture2D_cs6a1")
+
+[node name="Slot4" type="Button" parent="CanvasLayer/ColorRect/Inventory"]
+layout_mode = 2
+focus_mode = 1
+icon = SubResource("PlaceholderTexture2D_cs6a1")
+
+[node name="Slot5" type="Button" parent="CanvasLayer/ColorRect/Inventory"]
+layout_mode = 2
+focus_mode = 1
+icon = SubResource("PlaceholderTexture2D_cs6a1")
+
+[node name="Slot6" type="Button" parent="CanvasLayer/ColorRect/Inventory"]
+layout_mode = 2
+focus_mode = 1
+icon = SubResource("PlaceholderTexture2D_cs6a1")
+
+[node name="Slot7" type="Button" parent="CanvasLayer/ColorRect/Inventory"]
+layout_mode = 2
+focus_mode = 1
+icon = SubResource("PlaceholderTexture2D_cs6a1")
+
+[node name="Slot8" type="Button" parent="CanvasLayer/ColorRect/Inventory"]
+layout_mode = 2
+focus_mode = 1
+icon = SubResource("PlaceholderTexture2D_cs6a1")
+
+[node name="Slot9" type="Button" parent="CanvasLayer/ColorRect/Inventory"]
+layout_mode = 2
+focus_mode = 1
+icon = SubResource("PlaceholderTexture2D_cs6a1")
+
 [connection signal="body_entered" from="DownstairsHallway/KitchenDoor" to="Detective" method="_on_kitchen_door_body_entered"]
+[connection signal="body_exited" from="DownstairsHallway/KitchenDoor" to="Detective" method="_on_kitchen_door_body_exited"]
 [connection signal="body_entered" from="DownstairsHallway/CellarDoor" to="Detective" method="_on_cellar_door_body_entered"]
+[connection signal="body_exited" from="DownstairsHallway/CellarDoor" to="Detective" method="_on_cellar_door_body_exited"]
 [connection signal="body_entered" from="DownstairsHallway/LivingRoomDoor" to="Detective" method="_on_living_room_door_body_entered"]
+[connection signal="body_exited" from="DownstairsHallway/LivingRoomDoor" to="Detective" method="_on_living_room_door_body_exited"]
 [connection signal="body_entered" from="Kitchen/KitchenToHallway" to="Detective" method="_on_kitchen_to_hallway_body_entered"]
 [connection signal="body_entered" from="LivingRoom/LivingRoomToHallway" to="Detective" method="_on_living_room_to_hallway_body_entered"]
