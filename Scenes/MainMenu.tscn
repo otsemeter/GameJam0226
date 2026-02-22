@@ -1,20 +1,43 @@
 [gd_scene format=3 uid="uid://behah212rwhh6"]
 
-[ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="Script" uid="uid://k2gqayoef6bf" path="res://Scenes/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://benynfhm8shna" path="res://Assets/Game/Objects/TittleScreen.png" id="2_853f1"]
 
 [node name="MainMenu" type="Node2D" unique_id=1945992383]
 
 [node name="Control" type="Control" parent="." unique_id=1709935491]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 1158.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_tt5f1")
 
-[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=2138947284]
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=2060232500]
+z_index = -1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1146.0
+offset_bottom = 632.0
+pivot_offset = Vector2(341, 372)
+texture = ExtResource("2_853f1")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=2138947284]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-142, -36)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer" unique_id=609886414]
 layout_mode = 2
@@ -24,6 +47,7 @@ layout_mode = 2
 text = "My Game"
 
 [node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer" unique_id=2067386636]
+z_index = 1
 layout_mode = 2
 text = "Start"
 
