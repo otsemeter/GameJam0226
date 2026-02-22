@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://g0akar8mmk6d"]
+[gd_resource type="TileSet" format=3 uid="uid://g0akar8mmk6d"]
 
 [ext_resource type="Texture2D" uid="uid://cd70xy561bfxu" path="res://Assets/Game/Tilesets/Livingroom1.jpeg" id="1_8rwox"]
 [ext_resource type="Texture2D" uid="uid://bsfon3m8ng4gp" path="res://Assets/Game/Tilesets/TransparentStairs.png" id="2_22ivt"]
