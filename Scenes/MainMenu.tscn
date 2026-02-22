@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://behah212rwhh6"]
+
+[ext_resource type="Script" uid="uid://gon8c1kgfpfn" path="res://Scenes/MainMenu.gd" id="1_tt5f1"]
+
+[node name="MainMenu" type="Node2D" unique_id=1945992383]
+
+[node name="Control" type="Control" parent="." unique_id=1709935491]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_tt5f1")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=2138947284]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer" unique_id=609886414]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer" unique_id=1108607285]
+layout_mode = 2
+text = "My Game"
+
+[node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer" unique_id=2067386636]
+layout_mode = 2
+text = "Start"
+
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Button" to="Control" method="_on_button_pressed"]
